@@ -4,6 +4,52 @@
  * Esta página sirve como documentación interactiva de los endpoints disponibles.
  */
 
+// Metadata para SEO (Next.js App Router compatible)
+export const metadata = {
+  title: "Little API — Endpoints educativos para Next.js",
+  description:
+    "Little API es un proyecto educativo que muestra cómo crear endpoints en Next.js 15 con buenas prácticas. Prueba /api/advice y /api/dog. Consultoría web: info@webcode.es",
+  keywords: [
+    "Next.js",
+    "API",
+    "endpoints",
+    "TypeScript",
+    "Little API",
+    "webcode.es",
+    "consultoría web",
+  ],
+  metadataBase: new URL("https://webcode.es"),
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Little API — Endpoints educativos",
+    description:
+      "Proyecto educativo para aprender a crear endpoints en Next.js 15 con buenas prácticas. Consultoría web: info@webcode.es",
+    url: "https://webcode.es/",
+    siteName: "Little API",
+    images: ["/file.svg"],
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Little API — Endpoints educativos",
+    description:
+      "Proyecto educativo para aprender a crear endpoints en Next.js 15 con buenas prácticas.",
+    images: ["/file.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+} as const;
+
 export default function Home() {
   return (
     <main className="min-h-screen p-8 pb-20 sm:p-20 font-sans">
@@ -325,7 +371,27 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-600 dark:text-gray-400">
-          <p>Hecho con ❤️ con fines educativos</p>
+          <p>
+            Hecho con <span aria-hidden>❤️</span> con fines educativos · creado
+            por{" "}
+            <a
+              href="https://webcode.es"
+              target="_blank"
+              rel="noreferrer"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              webcode.es
+            </a>
+          </p>
+          <p className="mt-1">
+            Consultoría web:{" "}
+            <a
+              href="mailto:info@webcode.es"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              info@webcode.es
+            </a>
+          </p>
           <p className="mt-2 text-sm">
             <a
               href="https://nextjs.org/docs"
@@ -345,6 +411,30 @@ export default function Home() {
             </a>
           </p>
         </footer>
+
+        {/* JSON-LD: Organization (mejora SEO y ayuda a los motores de búsqueda) */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "webcode.es",
+              url: "https://webcode.es",
+              sameAs: ["https://github.com/JordiNodeJS/little-api"],
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "",
+                  contactType: "Consultoría Web",
+                  email: "info@webcode.es",
+                  availableLanguage: ["es", "en"],
+                },
+              ],
+            }),
+          }}
+        />
       </div>
     </main>
   );
