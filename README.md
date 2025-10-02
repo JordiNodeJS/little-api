@@ -32,7 +32,7 @@
 ✅ Consumir APIs externas de forma eficiente  
 ✅ Aplicar buenas prácticas de TypeScript  
 ✅ Manejar errores y validaciones correctamente  
-✅ Documentar código profesionalmente  
+✅ Documentar código profesionalmente
 
 ---
 
@@ -61,14 +61,14 @@
 
 ## 🛠️ Tecnologías
 
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| **Next.js** | 15.5.4 | Framework React con App Router |
-| **React** | 19.1.0 | Librería de UI |
-| **TypeScript** | 5.9.3 | Tipado estático |
-| **TailwindCSS** | 4.1.14 | Framework CSS (opcional) |
-| **ESLint** | 9.36.0 | Linter para calidad de código |
-| **pnpm** | 10.15+ | Gestor de paquetes |
+| Tecnología      | Versión | Propósito                      |
+| --------------- | ------- | ------------------------------ |
+| **Next.js**     | 15.5.4  | Framework React con App Router |
+| **React**       | 19.1.0  | Librería de UI                 |
+| **TypeScript**  | 5.9.3   | Tipado estático                |
+| **TailwindCSS** | 4.1.14  | Framework CSS (opcional)       |
+| **ESLint**      | 9.36.0  | Linter para calidad de código  |
+| **pnpm**        | 10.15+  | Gestor de paquetes             |
 
 ---
 
@@ -76,14 +76,11 @@
 
 ### Prerequisitos
 
-- **Node.js** 18.17 o superior
-- **pnpm** instalado globalmente (`npm install -g pnpm`)
-
 ### Pasos de Instalación
 
 ```bash
 # 1. Clonar el repositorio (o crear desde cero siguiendo el tutorial)
-git clone https://github.com/tu-usuario/little-api.git
+git clone https://github.com/JordiNodeJS/little-api.git
 cd little-api
 
 # 2. Instalar dependencias
@@ -138,6 +135,7 @@ little-api/
 **Métodos**: `GET`
 
 **Parámetros Query**:
+
 - `id` (opcional): ID del consejo específico
 
 **Ejemplos de Uso**:
@@ -151,6 +149,7 @@ curl http://localhost:3000/api/advice?id=42
 ```
 
 **Respuesta Exitosa** (200):
+
 ```json
 {
   "success": true,
@@ -164,6 +163,7 @@ curl http://localhost:3000/api/advice?id=42
 ```
 
 **Respuesta de Error** (400):
+
 ```json
 {
   "success": false,
@@ -180,6 +180,7 @@ curl http://localhost:3000/api/advice?id=42
 **Métodos**: `GET`
 
 **Parámetros Query**:
+
 - `breed` (opcional): Raza del perro (ej: "husky", "corgi", "beagle")
 
 **Ejemplos de Uso**:
@@ -193,6 +194,7 @@ curl http://localhost:3000/api/dog?breed=husky
 ```
 
 **Respuesta Exitosa** (200):
+
 ```json
 {
   "success": true,
@@ -213,6 +215,7 @@ Para una guía completa de cómo se construyó este proyecto desde cero, consult
 👉 **[docs/TUTORIAL.md](docs/TUTORIAL.md)**
 
 El tutorial cubre:
+
 1. Inicialización del proyecto Next.js 15
 2. Estructura de carpetas en App Router
 3. Creación de Route Handlers
@@ -261,7 +264,7 @@ curl http://localhost:3000/api/advice | jq
 ```typescript
 // Desde el navegador o Node.js
 async function testAdviceAPI() {
-  const response = await fetch('http://localhost:3000/api/advice');
+  const response = await fetch("http://localhost:3000/api/advice");
   const data = await response.json();
   console.log(data);
 }
@@ -287,7 +290,7 @@ Este proyecto integra **Chrome DevTools MCP** en Cursor para debugging avanzado:
 ✅ **Tomar screenshots** automáticos  
 ✅ **Testear formularios** sin código manual  
 ✅ **Medir performance** con emulación de red/CPU  
-✅ **Automatizar tests E2E** visuales  
+✅ **Automatizar tests E2E** visuales
 
 ### Ejemplos de Uso
 
@@ -312,6 +315,7 @@ Este proyecto integra **Chrome DevTools MCP** en Cursor para debugging avanzado:
 👉 **[docs/CHROME-DEVTOOLS-DEBUGGING.md](docs/CHROME-DEVTOOLS-DEBUGGING.md)**
 
 Esta guía incluye:
+
 - Casos de uso completos
 - Comandos útiles para Cursor
 - Testing E2E paso a paso
@@ -325,12 +329,14 @@ Esta guía incluye:
 ### 1. App Router vs Pages Router
 
 **App Router** (nuevo en Next.js 13+):
+
 - Usa la carpeta `app/` en lugar de `pages/`
 - Los endpoints se crean en `app/api/.../route.ts`
 - Más flexible y potente para APIs modernas
 - Mejor integración con React Server Components
 
 **Pages Router** (antiguo):
+
 - Usa la carpeta `pages/api/`
 - Endpoints en `pages/api/[nombre].ts`
 - Aún soportado pero legacy
@@ -341,11 +347,12 @@ Esta guía incluye:
 // app/api/ejemplo/route.ts
 export async function GET(request: NextRequest) {
   // Tu lógica aquí
-  return Response.json({ data: 'ejemplo' });
+  return Response.json({ data: "ejemplo" });
 }
 ```
 
 ✅ **Buenas Prácticas**:
+
 - Exportar funciones nombradas (`GET`, `POST`, etc.)
 - Usar `NextRequest` para tipado
 - Devolver `Response.json()` para respuestas JSON
@@ -356,18 +363,17 @@ export async function GET(request: NextRequest) {
 
 ```typescript
 try {
-  const response = await fetch(apiUrl, { cache: 'no-store' });
-  
+  const response = await fetch(apiUrl, { cache: "no-store" });
+
   if (!response.ok) {
     throw new Error(`API error: ${response.status}`);
   }
-  
+
   const data = await response.json();
   return Response.json({ success: true, data });
-  
 } catch (error) {
   return Response.json(
-    { success: false, error: 'Error message' },
+    { success: false, error: "Error message" },
     { status: 500 }
   );
 }
@@ -375,12 +381,12 @@ try {
 
 ### 4. Status Codes Correctos
 
-| Código | Significado | Cuándo Usarlo |
-|--------|-------------|---------------|
-| 200 | OK | Operación exitosa |
-| 400 | Bad Request | Parámetros inválidos |
-| 404 | Not Found | Recurso no encontrado |
-| 500 | Internal Server Error | Error del servidor |
+| Código | Significado           | Cuándo Usarlo         |
+| ------ | --------------------- | --------------------- |
+| 200    | OK                    | Operación exitosa     |
+| 400    | Bad Request           | Parámetros inválidos  |
+| 404    | Not Found             | Recurso no encontrado |
+| 500    | Internal Server Error | Error del servidor    |
 
 ### 5. TypeScript es tu Aliado
 
@@ -463,7 +469,7 @@ Si vas a usar este proyecto en un curso:
 ¿Preguntas? ¿Sugerencias?
 
 - 📧 Email: tu-email@ejemplo.com
-- 💬 Issues: [GitHub Issues](https://github.com/tu-usuario/little-api/issues)
+- 💬 Issues: [GitHub Issues](https://github.com/JordiNodeJS/little-api/issues)
 - 📖 Documentación: Consulta la carpeta `docs/`
 
 ---

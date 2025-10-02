@@ -1,5 +1,39 @@
 # 📝 Changelog - Little API
 
+## [1.1.1] - 2025-10-02
+
+### 🐛 Fixed
+
+**Endpoint `/api/advice`**:
+- ✅ Corregido bug en manejo de IDs inexistentes
+  - Antes: Devolvía 500 con error `Cannot read properties of undefined`
+  - Ahora: Devuelve 404 con mensaje claro sobre ID no encontrado
+  
+**Implementación**:
+- Agregado paso de validación (PASO 8.5) que verifica estructura de datos
+- Valida que `data.slip` y `data.slip.advice` existan antes de acceder
+- Implementa patrón de "defensa en profundidad" para APIs externas
+
+**Testing**:
+- ✅ Test suite completo pasando al 100% (13/13 tests)
+- Test "Non-existent ID" ahora pasa correctamente (404 esperado)
+
+**Documentación Actualizada**:
+- `docs/LESSONS-LEARNED.md` - Agregado principio de validación de datos externos
+- `docs/TUTORIAL.md` - Añadido paso de validación en sección de consumo de APIs
+- Ejemplos de código actualizados con patrón de validación
+
+### 📚 Lección Aprendida
+
+**Principio de Defensa en Profundidad**:
+1. ✅ Validar inputs del usuario
+2. ✅ Verificar status HTTP de respuestas
+3. ✅ **NUEVO**: Validar estructura de datos recibidos de APIs externas
+
+Algunas APIs pueden devolver `200 OK` con datos incompletos o `undefined` en ciertos casos edge. Siempre verifica que los datos existan antes de acceder a sus propiedades.
+
+---
+
 ## [1.1.0] - 2025-10-02
 
 ### ✨ Added - Cursor AI Rules & Chrome DevTools MCP Integration

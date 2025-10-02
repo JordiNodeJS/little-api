@@ -1,6 +1,6 @@
 /**
  * 🏠 Página Principal de Little API
- * 
+ *
  * Esta página sirve como documentación interactiva de los endpoints disponibles.
  */
 
@@ -14,7 +14,8 @@ export default function Home() {
             🎓 Little API
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Proyecto educativo para aprender a crear endpoints en Next.js 15 con buenas prácticas
+            Proyecto educativo para aprender a crear endpoints en Next.js 15 con
+            buenas prácticas
           </p>
         </header>
 
@@ -29,49 +30,60 @@ export default function Home() {
           <div className="mb-8 p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800">
             <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
               <span>💡</span>
-              <code className="text-blue-600 dark:text-blue-400">/api/advice</code>
+              <code className="text-blue-600 dark:text-blue-400">
+                /api/advice
+              </code>
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               Obtiene consejos aleatorios desde Advice Slip API
             </p>
-            
+
             <div className="space-y-2">
               <div>
-                <span className="font-semibold">Método:</span>{' '}
+                <span className="font-semibold">Método:</span>{" "}
                 <span className="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded text-sm font-mono">
                   GET
                 </span>
               </div>
-              
+
               <div>
                 <span className="font-semibold">Parámetros:</span>
                 <ul className="mt-2 ml-6 space-y-1 text-sm">
-                  <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">id</code> (opcional) - ID del consejo específico</li>
+                  <li>
+                    <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      id
+                    </code>{" "}
+                    (opcional) - ID del consejo específico
+                  </li>
                 </ul>
               </div>
-              
+
               <div>
                 <span className="font-semibold">Ejemplos:</span>
                 <ul className="mt-2 space-y-1">
                   <li>
-                    <a 
-                      href="/api/advice" 
+                    <a
+                      href="/api/advice"
                       target="_blank"
                       className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-mono"
                     >
                       /api/advice
                     </a>
-                    <span className="text-gray-500 text-sm ml-2">→ Consejo aleatorio</span>
+                    <span className="text-gray-500 text-sm ml-2">
+                      → Consejo aleatorio
+                    </span>
                   </li>
                   <li>
-                    <a 
-                      href="/api/advice?id=42" 
+                    <a
+                      href="/api/advice?id=42"
                       target="_blank"
                       className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-mono"
                     >
                       /api/advice?id=42
                     </a>
-                    <span className="text-gray-500 text-sm ml-2">→ Consejo #42</span>
+                    <span className="text-gray-500 text-sm ml-2">
+                      → Consejo #42
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -87,48 +99,57 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               Obtiene imágenes aleatorias de perros desde Dog CEO API
             </p>
-            
+
             <div className="space-y-2">
               <div>
-                <span className="font-semibold">Método:</span>{' '}
+                <span className="font-semibold">Método:</span>{" "}
                 <span className="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded text-sm font-mono">
                   GET
                 </span>
               </div>
-              
+
               <div>
                 <span className="font-semibold">Parámetros:</span>
                 <ul className="mt-2 ml-6 space-y-1 text-sm">
-                  <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">breed</code> (opcional) - Raza del perro (ej: husky, corgi, beagle)</li>
+                  <li>
+                    <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      breed
+                    </code>{" "}
+                    (opcional) - Raza del perro (ej: husky, corgi, beagle)
+                  </li>
                 </ul>
               </div>
-              
+
               <div>
                 <span className="font-semibold">Ejemplos:</span>
                 <ul className="mt-2 space-y-1">
                   <li>
-                    <a 
-                      href="/api/dog" 
+                    <a
+                      href="/api/dog"
                       target="_blank"
                       className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-mono"
                     >
                       /api/dog
                     </a>
-                    <span className="text-gray-500 text-sm ml-2">→ Perro aleatorio</span>
+                    <span className="text-gray-500 text-sm ml-2">
+                      → Perro aleatorio
+                    </span>
                   </li>
                   <li>
-                    <a 
-                      href="/api/dog?breed=husky" 
+                    <a
+                      href="/api/dog?breed=husky"
                       target="_blank"
                       className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-mono"
                     >
                       /api/dog?breed=husky
                     </a>
-                    <span className="text-gray-500 text-sm ml-2">→ Husky siberiano</span>
+                    <span className="text-gray-500 text-sm ml-2">
+                      → Husky siberiano
+                    </span>
                   </li>
                   <li>
-                    <a 
-                      href="/api/dog?breed=corgi" 
+                    <a
+                      href="/api/dog?breed=corgi"
                       target="_blank"
                       className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-mono"
                     >
@@ -148,11 +169,13 @@ export default function Home() {
             <span>🚀</span>
             <span>Quick Start</span>
           </h2>
-          
+
           <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
             <ol className="space-y-4">
               <li className="flex gap-3">
-                <span className="font-bold text-blue-600 dark:text-blue-400">1.</span>
+                <span className="font-bold text-blue-600 dark:text-blue-400">
+                  1.
+                </span>
                 <div>
                   <p className="font-semibold">Instalar dependencias</p>
                   <code className="block mt-1 bg-black text-green-400 p-2 rounded text-sm">
@@ -160,21 +183,29 @@ export default function Home() {
                   </code>
                 </div>
               </li>
-              
+
               <li className="flex gap-3">
-                <span className="font-bold text-blue-600 dark:text-blue-400">2.</span>
+                <span className="font-bold text-blue-600 dark:text-blue-400">
+                  2.
+                </span>
                 <div>
-                  <p className="font-semibold">Iniciar servidor de desarrollo</p>
+                  <p className="font-semibold">
+                    Iniciar servidor de desarrollo
+                  </p>
                   <code className="block mt-1 bg-black text-green-400 p-2 rounded text-sm">
                     pnpm dev
                   </code>
                 </div>
               </li>
-              
+
               <li className="flex gap-3">
-                <span className="font-bold text-blue-600 dark:text-blue-400">3.</span>
+                <span className="font-bold text-blue-600 dark:text-blue-400">
+                  3.
+                </span>
                 <div>
-                  <p className="font-semibold">Probar endpoints en el navegador o con cURL</p>
+                  <p className="font-semibold">
+                    Probar endpoints en el navegador o con cURL
+                  </p>
                   <code className="block mt-1 bg-black text-green-400 p-2 rounded text-sm">
                     curl http://localhost:3000/api/advice
                   </code>
@@ -182,7 +213,9 @@ export default function Home() {
               </li>
 
               <li className="flex gap-3">
-                <span className="font-bold text-blue-600 dark:text-blue-400">4.</span>
+                <span className="font-bold text-blue-600 dark:text-blue-400">
+                  4.
+                </span>
                 <div>
                   <p className="font-semibold">Ejecutar tests automáticos</p>
                   <code className="block mt-1 bg-black text-green-400 p-2 rounded text-sm">
@@ -200,11 +233,13 @@ export default function Home() {
             <span>📚</span>
             <span>Documentación</span>
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <a 
-              href="https://github.com/tu-usuario/little-api/blob/main/docs/TUTORIAL.md"
+            <a
+              href="https://github.com/JordiNodeJS/little-api/blob/main/docs/TUTORIAL.md"
               className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+              target="_blank"
+              rel="noreferrer"
             >
               <h3 className="font-semibold mb-2 flex items-center gap-2">
                 <span>📖</span>
@@ -215,9 +250,11 @@ export default function Home() {
               </p>
             </a>
 
-            <a 
-              href="https://github.com/tu-usuario/little-api/blob/main/docs/TESTING.md"
+            <a
+              href="https://github.com/JordiNodeJS/little-api/blob/main/docs/TESTING.md"
               className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+              target="_blank"
+              rel="noreferrer"
             >
               <h3 className="font-semibold mb-2 flex items-center gap-2">
                 <span>🧪</span>
@@ -228,9 +265,11 @@ export default function Home() {
               </p>
             </a>
 
-            <a 
-              href="https://github.com/tu-usuario/little-api/blob/main/docs/LESSONS-LEARNED.md"
+            <a
+              href="https://github.com/JordiNodeJS/little-api/blob/main/docs/LESSONS-LEARNED.md"
               className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+              target="_blank"
+              rel="noreferrer"
             >
               <h3 className="font-semibold mb-2 flex items-center gap-2">
                 <span>💡</span>
@@ -241,9 +280,11 @@ export default function Home() {
               </p>
             </a>
 
-            <a 
-              href="https://github.com/tu-usuario/little-api/blob/main/.github/prompts/ai-coding-rules.md"
+            <a
+              href="https://github.com/JordiNodeJS/little-api/blob/main/.github/prompts/ai-coding-rules.md"
               className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+              target="_blank"
+              rel="noreferrer"
             >
               <h3 className="font-semibold mb-2 flex items-center gap-2">
                 <span>🤖</span>
@@ -262,7 +303,7 @@ export default function Home() {
             <span>🛠️</span>
             <span>Tecnologías</span>
           </h2>
-          
+
           <div className="flex flex-wrap gap-3">
             <span className="px-4 py-2 bg-black text-white rounded-full text-sm font-semibold">
               Next.js 15.5.4
@@ -286,17 +327,18 @@ export default function Home() {
         <footer className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-600 dark:text-gray-400">
           <p>Hecho con ❤️ con fines educativos</p>
           <p className="mt-2 text-sm">
-            <a 
-              href="https://nextjs.org/docs" 
-              target="_blank" 
+            <a
+              href="https://nextjs.org/docs"
+              target="_blank"
               className="text-blue-600 dark:text-blue-400 hover:underline"
             >
               Next.js Docs
             </a>
-            {' · '}
-            <a 
-              href="https://github.com/tu-usuario/little-api" 
-              target="_blank" 
+            {" · "}
+            <a
+              href="https://github.com/JordiNodeJS/little-api"
+              target="_blank"
+              rel="noreferrer"
               className="text-blue-600 dark:text-blue-400 hover:underline"
             >
               GitHub

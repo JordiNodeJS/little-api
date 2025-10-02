@@ -311,11 +311,20 @@ export async function GET(request: NextRequest): Promise<Response> {
     // 3. Parsear JSON
     const data = await response.json();
     
-    // 4. Devolver respuesta
+    // 4. Validar estructura de datos recibidos
+    // IMPORTANTE: Algunas APIs pueden devolver 200 OK pero con datos incompletos
+    if (!data || !data.expectedField) {
+      return Response.json(
+        { success: false, error: 'Datos incompletos de la API' },
+        { status: 404 }
+      );
+    }
+    
+    // 5. Devolver respuesta
     return Response.json({ success: true, data });
     
   } catch (error) {
-    // 5. Manejar errores
+    // 6. Manejar errores
     return Response.json(
       { success: false, error: 'Error al obtener datos' },
       { status: 500 }
@@ -332,9 +341,10 @@ export async function GET(request: NextRequest): Promise<Response> {
 
 1. **Siempre usa try/catch**
 2. **Valida entradas antes de procesarlas**
-3. **Devuelve status codes apropiados**
-4. **No expongas detalles internos en producción**
-5. **Loggea errores para debugging**
+3. **Valida datos recibidos de APIs externas**
+4. **Devuelve status codes apropiados**
+5. **No expongas detalles internos en producción**
+6. **Loggea errores para debugging**
 
 ### ✅ Estructura Básica
 

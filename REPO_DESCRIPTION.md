@@ -13,7 +13,7 @@ Características principales
 Instalación rápida
 
 ```bash
-git clone https://github.com/tu-usuario/little-api.git
+git clone https://github.com/JordiNodeJS/little-api.git
 cd little-api
 pnpm install
 pnpm dev

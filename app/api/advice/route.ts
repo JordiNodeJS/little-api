@@ -116,6 +116,21 @@ export async function GET(request: NextRequest): Promise<Response> {
     // ✅ PASO 8: Parsear la respuesta JSON con tipado
     const data: AdviceSlipResponse = await response.json();
 
+    // ✅ PASO 8.5: Validar que la respuesta contenga datos válidos
+    // Algunas APIs pueden devolver 200 OK pero sin el objeto esperado
+    // o con campos undefined cuando el recurso no existe
+    if (!data.slip || !data.slip.advice) {
+      return Response.json(
+        {
+          success: false,
+          error: adviceId 
+            ? `No se encontró ningún consejo con el ID ${adviceId}`
+            : 'No se pudo obtener un consejo en este momento',
+        } satisfies ApiResponse,
+        { status: 404 }
+      );
+    }
+
     // ✅ PASO 9: Transformar y simplificar la respuesta
     // Creamos una estructura más limpia y añadimos metadatos útiles
     const simplifiedResponse: ApiResponse = {

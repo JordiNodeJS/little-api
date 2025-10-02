@@ -371,6 +371,16 @@ export async function GET(request: NextRequest): Promise<Response> {
     // Parsear JSON
     const data: AdviceSlipResponse = await response.json();
     
+    // Validar que los datos existen (defensa en profundidad)
+    if (!data.slip || !data.slip.advice) {
+      return Response.json({
+        success: false,
+        error: 'No se pudo obtener un consejo en este momento'
+      } satisfies ApiResponse, {
+        status: 404
+      });
+    }
+    
     // Devolver respuesta simplificada
     return Response.json({
       success: true,
@@ -449,6 +459,20 @@ if (!response.ok) {
   
   // Otros errores
   throw new Error(`API respondió con status: ${response.status}`);
+}
+
+// Parsear respuesta
+const data: AdviceSlipResponse = await response.json();
+
+// Validar estructura de datos (defensa en profundidad)
+// Algunas APIs pueden devolver 200 OK pero con datos incompletos
+if (!data.slip || !data.slip.advice) {
+  return Response.json({
+    success: false,
+    error: 'Datos incompletos de la API externa'
+  } satisfies ApiResponse, {
+    status: 404
+  });
 }
 ```
 

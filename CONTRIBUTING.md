@@ -11,7 +11,7 @@
 ```bash
 # Fork el repositorio en GitHub
 # Luego clona tu fork
-git clone https://github.com/tu-usuario/little-api.git
+git clone https://github.com/JordiNodeJS/little-api.git
 cd little-api
 ```
 
@@ -22,6 +22,7 @@ git checkout -b feature/nueva-funcionalidad
 ```
 
 **Convención de nombres de ramas**:
+
 - `feature/` - Nueva funcionalidad
 - `fix/` - Corrección de bugs
 - `docs/` - Cambios en documentación
@@ -52,6 +53,7 @@ git commit -m "Add: nueva funcionalidad de ejemplo"
 ```
 
 **Convención de commits**:
+
 - `Add:` - Nueva funcionalidad
 - `Fix:` - Corrección de bug
 - `Update:` - Actualización de código existente
@@ -79,6 +81,7 @@ app/api/tu-endpoint/route.ts
 ```
 
 Requisitos:
+
 - Documentado con comentarios educativos
 - Tipado completo con TypeScript
 - Manejo de errores con try/catch
@@ -119,7 +122,7 @@ Requisitos:
 
 ## 🐛 Reportar Bugs
 
-Abre un [Issue](https://github.com/tu-usuario/little-api/issues) con:
+Abre un [Issue](https://github.com/JordiNodeJS/little-api/issues) con:
 
 - **Descripción**: ¿Qué salió mal?
 - **Pasos para reproducir**: ¿Cómo podemos replicar el bug?
@@ -130,7 +133,7 @@ Abre un [Issue](https://github.com/tu-usuario/little-api/issues) con:
 
 ## 💡 Proponer Funcionalidades
 
-Abre un [Issue](https://github.com/tu-usuario/little-api/issues) con la etiqueta `enhancement`:
+Abre un [Issue](https://github.com/JordiNodeJS/little-api/issues) con la etiqueta `enhancement`:
 
 - **Descripción**: ¿Qué quieres añadir?
 - **Justificación**: ¿Por qué sería útil?
@@ -155,7 +158,7 @@ Gracias por contribuir a hacer este proyecto mejor para todos los estudiantes.
 
 <div align="center">
 
-**¿Preguntas?** Abre un [Issue](https://github.com/tu-usuario/little-api/issues) o únete a la discusión.
+**¿Preguntas?** Abre un [Issue](https://github.com/JordiNodeJS/little-api/issues) o únete a la discusión.
+**¿Preguntas?** Abre un [Issue](https://github.com/JordiNodeJS/little-api/issues) o únete a la discusión.
 
 </div>
-

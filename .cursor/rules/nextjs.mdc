@@ -1,5 +1,6 @@
 ---
-alwaysApply: true
+description: reglas para codificar en Nextjs 15
+alwaysApply: false
 ---
 # 🤖 Reglas de AI para Codificación con Next.js 15 y APIs
 
