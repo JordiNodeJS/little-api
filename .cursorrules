@@ -1,0 +1,628 @@
+# 🤖 Cursor AI Rules - Little API Project
+
+## 📋 Principios Generales
+
+- Este es un proyecto educativo enfocado en enseñar Next.js 15 y APIs
+- El código debe ser **educativo primero**, luego eficiente
+- Cada pieza de código debe incluir comentarios que expliquen el "por qué"
+- Seguir las reglas detalladas en `.github/prompts/ai-coding-rules.md`
+
+## 🔧 Tecnologías del Proyecto
+
+- **Next.js**: 15.5.4 (App Router)
+- **React**: 19.1.0
+- **TypeScript**: 5.9.3
+- **TailwindCSS**: 4.1.14
+- **Package Manager**: pnpm (NO usar npm)
+
+## 🎯 Next.js 15 - Mejores Prácticas (Context7)
+
+### App Router (Obligatorio)
+
+```typescript
+// ✅ CORRECTO - Usar App Router
+// Archivo: app/api/ejemplo/route.ts
+import { NextRequest } from 'next/server';
+
+export async function GET(request: NextRequest): Promise<Response> {
+  return Response.json({ data: 'ejemplo' });
+}
+
+// ❌ INCORRECTO - Pages Router (legacy)
+// Archivo: pages/api/ejemplo.ts
+export default function handler(req, res) {
+  res.json({ data: 'ejemplo' });
+}
+```
+
+### Route Handlers
+
+- Usar `app/api/[nombre]/route.ts` para endpoints
+- Exportar funciones nombradas: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`
+- Siempre tipar con `NextRequest` y `Promise<Response>`
+- Usar `Response.json()` para respuestas JSON
+
+### Fetch Mejorado (Next.js 15)
+
+```typescript
+// Usar opciones de cache nativas
+const data = await fetch(url, {
+  cache: 'no-store',           // No cachear
+  next: { revalidate: 3600 },  // Revalidar cada hora
+});
+```
+
+### Configuración de Routes
+
+```typescript
+// Al final de route.ts
+export const dynamic = 'force-dynamic';  // Sin cache
+export const revalidate = 0;             // Siempre fresh
+export const runtime = 'nodejs';         // Runtime
+```
+
+### Server Components por Defecto
+
+- Todos los componentes en `app/` son Server Components por defecto
+- Usar `'use client'` solo cuando sea necesario (interactividad, hooks)
+- Aprovechar data fetching en el servidor
+
+## 📝 TypeScript Estricto
+
+### Interfaces Siempre
+
+```typescript
+// ✅ CORRECTO
+interface ApiResponse {
+  success: boolean;
+  data?: {
+    id: number;
+    value: string;
+  };
+  error?: string;
+}
+
+export async function GET(): Promise<Response> {
+  return Response.json({
+    success: true,
+    data: { id: 1, value: 'test' }
+  } satisfies ApiResponse);
+}
+
+// ❌ INCORRECTO
+export async function GET() {
+  return Response.json({ success: true, data: { id: 1, value: 'test' } });
+}
+```
+
+### Evitar `any`
+
+```typescript
+// ❌ INCORRECTO
+const data: any = await response.json();
+
+// ✅ CORRECTO
+interface ExpectedData {
+  id: number;
+  name: string;
+}
+const data: ExpectedData = await response.json();
+
+// ✅ Si el tipo es desconocido, usar unknown
+const data: unknown = await response.json();
+```
+
+## 🌐 Consumo de APIs Externas
+
+### Patrón Estándar
+
+```typescript
+export async function GET(request: NextRequest): Promise<Response> {
+  try {
+    // 1. Obtener y validar parámetros
+    const { searchParams } = new URL(request.url);
+    const param = searchParams.get('param');
+    
+    if (param && !isValid(param)) {
+      return Response.json(
+        { success: false, error: 'Parámetro inválido' },
+        { status: 400 }
+      );
+    }
+    
+    // 2. Fetch a API externa
+    const response = await fetch(apiUrl, {
+      cache: 'no-store',
+      headers: { 'Accept': 'application/json' }
+    });
+    
+    // 3. Verificar respuesta
+    if (!response.ok) {
+      if (response.status === 404) {
+        return Response.json(
+          { success: false, error: 'No encontrado' },
+          { status: 404 }
+        );
+      }
+      throw new Error(`API error: ${response.status}`);
+    }
+    
+    // 4. Parsear y transformar
+    const data: ExpectedInterface = await response.json();
+    
+    // 5. Devolver respuesta
+    return Response.json({
+      success: true,
+      data: transformedData
+    } satisfies ApiResponse);
+    
+  } catch (error) {
+    console.error('Error:', error);
+    return Response.json(
+      { success: false, error: 'Error interno' },
+      { status: 500 }
+    );
+  }
+}
+```
+
+## 🛡️ Manejo de Errores
+
+### Try/Catch Siempre
+
+```typescript
+// ✅ CORRECTO
+try {
+  const data = await fetchData();
+  return Response.json({ success: true, data });
+} catch (error) {
+  console.error('Error:', error);
+  return Response.json(
+    { success: false, error: 'Error interno' },
+    { status: 500 }
+  );
+}
+```
+
+### Validación de Inputs
+
+```typescript
+// Validar ANTES de usar
+const id = searchParams.get('id');
+
+if (id && (isNaN(Number(id)) || Number(id) <= 0)) {
+  return Response.json(
+    { success: false, error: 'ID debe ser un número positivo' },
+    { status: 400 }
+  );
+}
+```
+
+### Status Codes Apropiados
+
+- `200` - Operación exitosa
+- `400` - Bad Request (parámetros inválidos)
+- `404` - Not Found (recurso no encontrado)
+- `500` - Internal Server Error (error del servidor)
+
+## 🔒 Seguridad
+
+### Variables de Entorno
+
+```typescript
+// ✅ CORRECTO
+const apiKey = process.env.API_KEY;
+
+if (!apiKey) {
+  throw new Error('API_KEY no configurada');
+}
+
+// ❌ INCORRECTO
+const apiKey = 'sk_12345abc'; // Nunca hardcodear
+```
+
+### Protección en Producción
+
+```typescript
+catch (error) {
+  const isDev = process.env.NODE_ENV === 'development';
+  
+  return Response.json({
+    success: false,
+    error: isDev ? error.message : 'Error interno del servidor'
+  }, { status: 500 });
+}
+```
+
+## 🧪 Chrome DevTools MCP - Debugging desde Cursor
+
+### Cuándo Usar Chrome DevTools MCP
+
+Usa las herramientas de Chrome DevTools cuando necesites:
+- Debugear aplicaciones web en tiempo real
+- Inspeccionar requests de red
+- Ver mensajes de consola
+- Interactuar con elementos del DOM
+- Tomar screenshots de la UI
+- Testear performance
+- Emular condiciones de red/CPU
+
+### Funciones Disponibles
+
+#### 1. Navegación y Páginas
+
+```typescript
+// Listar páginas abiertas
+mcp_chrome-devtools_list_pages
+
+// Navegar a una URL
+mcp_chrome-devtools_navigate_page({ url: "http://localhost:3000" })
+
+// Crear nueva pestaña
+mcp_chrome-devtools_new_page({ url: "http://localhost:3000/api/advice" })
+
+// Cerrar página
+mcp_chrome-devtools_close_page({ pageIdx: 1 })
+```
+
+#### 2. Inspección y Snapshots
+
+```typescript
+// Tomar snapshot de la página (mejor que screenshot para texto)
+mcp_chrome-devtools_take_snapshot()
+
+// Tomar screenshot
+mcp_chrome-devtools_take_screenshot({
+  format: "png",
+  quality: 90,
+  fullPage: true
+})
+
+// Screenshot de un elemento específico
+mcp_chrome-devtools_take_screenshot({
+  uid: "elemento-123",
+  format: "png"
+})
+```
+
+#### 3. Debugging de Network
+
+```typescript
+// Listar todos los requests de red
+mcp_chrome-devtools_list_network_requests({
+  resourceTypes: ["fetch", "xhr"],
+  pageSize: 20
+})
+
+// Obtener detalles de un request específico
+mcp_chrome-devtools_get_network_request({
+  url: "http://localhost:3000/api/advice"
+})
+```
+
+#### 4. Console y Logs
+
+```typescript
+// Ver mensajes de consola (console.log, errors, warnings)
+mcp_chrome-devtools_list_console_messages()
+```
+
+#### 5. Interacción con el DOM
+
+```typescript
+// Click en elemento
+mcp_chrome-devtools_click({ uid: "button-123" })
+
+// Doble click
+mcp_chrome-devtools_click({ uid: "button-123", dblClick: true })
+
+// Hover sobre elemento
+mcp_chrome-devtools_hover({ uid: "elemento-123" })
+
+// Rellenar formulario
+mcp_chrome-devtools_fill({ uid: "input-email", value: "test@example.com" })
+
+// Rellenar múltiples campos
+mcp_chrome-devtools_fill_form({
+  elements: [
+    { uid: "input-name", value: "John" },
+    { uid: "input-email", value: "john@example.com" }
+  ]
+})
+```
+
+#### 6. Performance Testing
+
+```typescript
+// Emular CPU lenta (testing en dispositivos lentos)
+mcp_chrome-devtools_emulate_cpu({ throttlingRate: 4 })
+
+// Emular red lenta
+mcp_chrome-devtools_emulate_network({ throttlingOption: "Slow 3G" })
+
+// Performance trace
+mcp_chrome-devtools_performance_start_trace({
+  reload: true,
+  autoStop: false
+})
+
+mcp_chrome-devtools_performance_stop_trace()
+
+// Analizar insight específico
+mcp_chrome-devtools_performance_analyze_insight({
+  insightName: "LCPBreakdown"
+})
+```
+
+#### 7. Evaluación de JavaScript
+
+```typescript
+// Ejecutar JavaScript en la página
+mcp_chrome-devtools_evaluate_script({
+  function: `() => {
+    return document.title;
+  }`
+})
+
+// Con argumentos (elementos del DOM)
+mcp_chrome-devtools_evaluate_script({
+  function: `(el) => {
+    return el.innerText;
+  }`,
+  args: [{ uid: "elemento-123" }]
+})
+```
+
+### Workflow de Debugging con Chrome DevTools MCP
+
+#### Caso 1: Debugear un Endpoint API
+
+```typescript
+// 1. Abrir la página
+mcp_chrome-devtools_navigate_page({ url: "http://localhost:3000" })
+
+// 2. Tomar snapshot para ver el DOM
+mcp_chrome-devtools_take_snapshot()
+
+// 3. Hacer click en botón que llama al API
+mcp_chrome-devtools_click({ uid: "button-fetch-advice" })
+
+// 4. Ver requests de red
+mcp_chrome-devtools_list_network_requests({
+  resourceTypes: ["fetch"]
+})
+
+// 5. Inspeccionar request específico
+mcp_chrome-devtools_get_network_request({
+  url: "http://localhost:3000/api/advice"
+})
+
+// 6. Ver errores en consola
+mcp_chrome-devtools_list_console_messages()
+```
+
+#### Caso 2: Testear Performance
+
+```typescript
+// 1. Navegar a la página
+mcp_chrome-devtools_navigate_page({ url: "http://localhost:3000" })
+
+// 2. Emular condiciones reales
+mcp_chrome-devtools_emulate_cpu({ throttlingRate: 4 })
+mcp_chrome-devtools_emulate_network({ throttlingOption: "Fast 3G" })
+
+// 3. Iniciar trace de performance
+mcp_chrome-devtools_performance_start_trace({
+  reload: true,
+  autoStop: true
+})
+
+// 4. Analizar resultados
+mcp_chrome-devtools_performance_analyze_insight({
+  insightName: "LCPBreakdown"
+})
+```
+
+#### Caso 3: Testing E2E Visual
+
+```typescript
+// 1. Navegar a la página
+mcp_chrome-devtools_navigate_page({ url: "http://localhost:3000" })
+
+// 2. Tomar snapshot inicial
+mcp_chrome-devtools_take_snapshot()
+
+// 3. Interactuar con la UI
+mcp_chrome-devtools_fill_form({
+  elements: [
+    { uid: "input-breed", value: "husky" }
+  ]
+})
+
+mcp_chrome-devtools_click({ uid: "button-submit" })
+
+// 4. Esperar respuesta
+mcp_chrome-devtools_wait_for({ text: "Resultado:", timeout: 5000 })
+
+// 5. Tomar screenshot del resultado
+mcp_chrome-devtools_take_screenshot({
+  format: "png",
+  fullPage: true,
+  filePath: "tests/screenshots/result.png"
+})
+
+// 6. Verificar requests
+mcp_chrome-devtools_list_network_requests()
+```
+
+### Mejores Prácticas con Chrome DevTools MCP
+
+1. **Siempre tomar snapshot primero** antes de interactuar con elementos para obtener los UIDs
+2. **Usar list_network_requests** para debugear problemas de API
+3. **Verificar console_messages** para ver logs y errores
+4. **Emular condiciones reales** (red lenta, CPU lenta) para testing realista
+5. **Tomar screenshots** para documentar bugs visuales
+6. **Performance traces** para optimizar Core Web Vitals
+
+### Integración con Testing
+
+```typescript
+// Ejemplo: Testear endpoint visualmente
+async function testAdviceEndpoint() {
+  // 1. Navegar
+  await mcp_chrome-devtools_navigate_page({ 
+    url: "http://localhost:3000" 
+  });
+  
+  // 2. Snapshot
+  const snapshot = await mcp_chrome-devtools_take_snapshot();
+  
+  // 3. Click en link del endpoint
+  await mcp_chrome-devtools_click({ uid: "link-advice" });
+  
+  // 4. Esperar respuesta
+  await mcp_chrome-devtools_wait_for({ 
+    text: "success", 
+    timeout: 3000 
+  });
+  
+  // 5. Verificar network request
+  const requests = await mcp_chrome-devtools_list_network_requests({
+    resourceTypes: ["fetch"]
+  });
+  
+  // 6. Screenshot del resultado
+  await mcp_chrome-devtools_take_screenshot({
+    filePath: "tests/advice-endpoint.png"
+  });
+  
+  // 7. Verificar consola
+  const logs = await mcp_chrome-devtools_list_console_messages();
+  
+  return { requests, logs, snapshot };
+}
+```
+
+## 📚 Documentación Educativa
+
+### Comentarios en el Código
+
+```typescript
+/**
+ * 📚 ENDPOINT DE EJEMPLO
+ * 
+ * Breve descripción del propósito del endpoint.
+ * 
+ * 🎯 Conceptos clave:
+ * - Concepto 1
+ * - Concepto 2
+ * 
+ * @example
+ * GET /api/ejemplo
+ * GET /api/ejemplo?param=valor
+ */
+
+// ✅ PASO 1: Descripción del paso
+// Explicación de por qué hacemos esto
+
+// ✅ PASO 2: Siguiente paso
+// Más explicación educativa
+```
+
+### JSDoc para Funciones
+
+```typescript
+/**
+ * Descripción de la función
+ * 
+ * @param request - Objeto NextRequest
+ * @returns Response JSON con datos o error
+ * 
+ * @example
+ * GET /api/ejemplo?id=42
+ */
+export async function GET(request: NextRequest): Promise<Response> {
+  // ...
+}
+```
+
+## ✅ Checklist Antes de Commit
+
+- [ ] Código tipado completamente (sin `any`)
+- [ ] Interfaces definidas para todas las respuestas
+- [ ] Try/catch para manejo de errores
+- [ ] Validación de parámetros de entrada
+- [ ] Status codes HTTP apropiados
+- [ ] Comentarios educativos incluidos
+- [ ] Ejemplos de uso en comentarios
+- [ ] Tests manuales completados (o con Chrome DevTools MCP)
+- [ ] Sin errores de linting (`pnpm lint`)
+- [ ] Documentación actualizada si aplica
+
+## 🚫 Anti-Patrones a Evitar
+
+```typescript
+// ❌ NO usar Pages Router
+// pages/api/ejemplo.ts
+
+// ❌ NO usar any
+const data: any = await response.json();
+
+// ❌ NO hardcodear secretos
+const apiKey = 'sk_12345';
+
+// ❌ NO ignorar errores
+fetch(url); // Sin await ni manejo de errores
+
+// ❌ NO devolver respuestas sin estructura
+return Response.json({ data: 'ok' }); // Sin success, sin tipado
+
+// ❌ NO usar npm
+npm install paquete // Usar: pnpm add paquete
+```
+
+## 📦 Package Manager: pnpm
+
+```bash
+# ✅ CORRECTO
+pnpm install
+pnpm add paquete
+pnpm add -D paquete-dev
+pnpm dev
+pnpm build
+
+# ❌ INCORRECTO
+npm install
+npm install paquete
+```
+
+## 🎯 Estructura de Respuestas Consistente
+
+```typescript
+// Todas las respuestas deben seguir este formato:
+interface StandardResponse<T> {
+  success: boolean;
+  data?: T;
+  error?: string;
+}
+
+// Éxito
+return Response.json({
+  success: true,
+  data: { /* datos */ }
+} satisfies StandardResponse<DataType>);
+
+// Error
+return Response.json({
+  success: false,
+  error: 'Mensaje de error claro'
+} satisfies StandardResponse<never>, {
+  status: 400 // Status code apropiado
+});
+```
+
+---
+
+**Para más detalles, consulta**: `.github/prompts/ai-coding-rules.md`
+
+
