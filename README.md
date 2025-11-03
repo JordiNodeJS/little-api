@@ -1,11 +1,11 @@
-# 🎓 Little API - Proyecto Educativo de Next.js 15
+# 🎓 Little API - Proyecto Educativo de Next.js 16
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.0.1-black)](https://nextjs.org/)
 [![Next.js 16 Ready](https://img.shields.io/badge/Next.js_16-Migration_Ready-green)](docs/MIGRATION-INDEX.md)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-> **Proyecto educativo** diseñado para enseñar a crear endpoints API con buenas prácticas en Next.js 15 usando App Router.
+> **Proyecto educativo** diseñado para enseñar a crear endpoints API con buenas prácticas en Next.js 16 usando App Router.
 
 ---
 
@@ -28,7 +28,7 @@
 
 ## 🎯 Descripción
 
-**Little API** es un proyecto educativo minimalista que demuestra cómo crear endpoints robustos y funcionales en Next.js 15. Está diseñado específicamente para estudiantes que quieren aprender a:
+**Little API** es un proyecto educativo minimalista que demuestra cómo crear endpoints robustos y funcionales en Next.js 16. Está diseñado específicamente para estudiantes que quieren aprender a:
 
 ✅ Crear APIs RESTful con App Router  
 ✅ Consumir APIs externas de forma eficiente  
@@ -44,7 +44,7 @@
 
 - **App Router vs Pages Router**: Diferencias y ventajas del nuevo sistema de rutas
 - **Route Handlers**: Cómo funcionan los archivos `route.ts`
-- **Request y Response**: Manejo moderno de peticiones HTTP en Next.js 15
+- **Request y Response**: Manejo moderno de peticiones HTTP en Next.js 16
 - **TypeScript**: Tipado fuerte para APIs seguras y predecibles
 - **Fetch API**: Consumo optimizado de APIs externas
 - **Error Handling**: Patrones profesionales de manejo de errores
@@ -65,8 +65,8 @@
 
 | Tecnología      | Versión | Propósito                      |
 | --------------- | ------- | ------------------------------ |
-| **Next.js**     | 15.5.4  | Framework React con App Router |
-| **React**       | 19.1.0  | Librería de UI                 |
+| **Next.js**     | 16.0.1  | Framework React con App Router |
+| **React**       | 19.2.0  | Librería de UI                 |
 | **TypeScript**  | 5.9.3   | Tipado estático                |
 | **TailwindCSS** | 4.1.14  | Framework CSS (opcional)       |
 | **ESLint**      | 9.36.0  | Linter para calidad de código  |
@@ -218,7 +218,7 @@ Para una guía completa de cómo se construyó este proyecto desde cero, consult
 
 El tutorial cubre:
 
-1. Inicialización del proyecto Next.js 15
+1. Inicialización del proyecto Next.js 16
 2. Estructura de carpetas en App Router
 3. Creación de Route Handlers
 4. Consumo de APIs externas
@@ -343,7 +343,7 @@ Esta guía incluye:
 - Endpoints en `pages/api/[nombre].ts`
 - Aún soportado pero legacy
 
-### 2. Estructura de un Endpoint en Next.js 15
+### 2. Estructura de un Endpoint en Next.js 16
 
 ```typescript
 // app/api/ejemplo/route.ts
@@ -414,7 +414,7 @@ Para el análisis completo de conceptos clave:
 
 ### Documentación Oficial
 
-- [Next.js 15 Docs](https://nextjs.org/docs)
+- [Next.js 16 Docs](https://nextjs.org/docs)
 - [App Router](https://nextjs.org/docs/app)
 - [Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
 - [TypeScript in Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)

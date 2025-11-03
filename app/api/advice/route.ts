@@ -1,7 +1,7 @@
 /**
  * 📚 ENDPOINT DE CONSEJOS ALEATORIOS
  * 
- * Este archivo demuestra cómo crear un endpoint API en Next.js 15 usando App Router.
+ * Este archivo demuestra cómo crear un endpoint API en Next.js 16 usando App Router.
  * Consumimos la API pública "Advice Slip API" y transformamos su respuesta.
  * 
  * 🎯 Conceptos clave:

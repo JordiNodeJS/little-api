@@ -2,7 +2,7 @@
   "name": "little-api",
   "version": "0.1.0",
   "private": true,
-  "description": "Proyecto educativo de Next.js 15 que muestra cómo crear endpoints API con App Router y buenas prácticas en TypeScript.",
+  "description": "Proyecto educativo de Next.js 16 que muestra cómo crear endpoints API con App Router y buenas prácticas en TypeScript.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

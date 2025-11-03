@@ -8,7 +8,7 @@
 export const metadata = {
   title: "Little API — Endpoints educativos para Next.js",
   description:
-    "Little API es un proyecto educativo que muestra cómo crear endpoints en Next.js 15 con buenas prácticas. Prueba /api/advice y /api/dog. Consultoría web: info@webcode.es",
+    "Little API es un proyecto educativo que muestra cómo crear endpoints en Next.js 16 con buenas prácticas. Prueba /api/advice y /api/dog. Consultoría web: info@webcode.es",
   keywords: [
     "Next.js",
     "API",
@@ -23,7 +23,7 @@ export const metadata = {
   openGraph: {
     title: "Little API — Endpoints educativos",
     description:
-      "Proyecto educativo para aprender a crear endpoints en Next.js 15 con buenas prácticas. Consultoría web: info@webcode.es",
+      "Proyecto educativo para aprender a crear endpoints en Next.js 16 con buenas prácticas. Consultoría web: info@webcode.es",
     url: "https://webcode.es/",
     siteName: "Little API",
     images: ["/file.svg"],
@@ -34,7 +34,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Little API — Endpoints educativos",
     description:
-      "Proyecto educativo para aprender a crear endpoints en Next.js 15 con buenas prácticas.",
+      "Proyecto educativo para aprender a crear endpoints en Next.js 16 con buenas prácticas.",
     images: ["/file.svg"],
   },
   robots: {
@@ -60,7 +60,7 @@ export default function Home() {
             🎓 Little API
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Proyecto educativo para aprender a crear endpoints en Next.js 15 con
+            Proyecto educativo para aprender a crear endpoints en Next.js 16 con
             buenas prácticas
           </p>
         </header>
@@ -352,7 +352,7 @@ export default function Home() {
 
           <div className="flex flex-wrap gap-3">
             <span className="px-4 py-2 bg-black text-white rounded-full text-sm font-semibold">
-              Next.js 15.5.4
+              Next.js 16.0.1
             </span>
             <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold">
               TypeScript 5.9

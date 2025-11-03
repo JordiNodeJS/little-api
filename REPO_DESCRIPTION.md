@@ -1,6 +1,6 @@
-Little API — Proyecto educativo de Next.js 15
+Little API — Proyecto educativo de Next.js 16
 
-Little API es un repositorio educativo y minimalista que demuestra cómo crear endpoints API robustos y documentados usando Next.js 15 (App Router) y TypeScript. Está pensado para estudiantes y desarrolladores que quieren aprender prácticas profesionales para construir, testear y depurar APIs modernas en un entorno Next.js.
+Little API es un repositorio educativo y minimalista que demuestra cómo crear endpoints API robustos y documentados usando Next.js 16 (App Router) y TypeScript. Está pensado para estudiantes y desarrolladores que quieren aprender prácticas profesionales para construir, testear y depurar APIs modernas en un entorno Next.js.
 
 Características principales
 
