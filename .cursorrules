@@ -1,5 +1,8 @@
 # 🤖 Cursor AI Rules - Little API Project
 
+# Paquetes
+Utiliza pnpm como gestor de paquetes y pnpm dlx para ejecutar herramientas sin instalarlas globalmente.
+
 ## 📋 Principios Generales
 
 - Este es un proyecto educativo enfocado en enseñar Next.js 15 y APIs

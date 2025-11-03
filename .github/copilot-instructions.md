@@ -2,6 +2,8 @@
 
 > Estas reglas guían a los asistentes de IA (Cursor, GitHub Copilot, ChatGPT, etc.) al generar código para este proyecto educativo.
 
+# Paquetes
+Utiliza pnpm como gestor de paquetes y pnpm dlx para ejecutar herramientas sin instalarlas globalmente.
 ---
 
 ## 📋 Principios Generales

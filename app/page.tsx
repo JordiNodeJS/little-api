@@ -415,7 +415,6 @@ export default function Home() {
         {/* JSON-LD: Organization (mejora SEO y ayuda a los motores de búsqueda) */}
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
