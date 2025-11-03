@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "name": "little-api (main)",
+      "path": "."
+    },
+    {
+      "name": "little-api (worktree)",
+      "path": "../wortree.little-api/dev"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/node_modules": true
+    }
+  }
+}
