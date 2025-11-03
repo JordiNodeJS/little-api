@@ -1,5 +1,84 @@
 # 📝 Changelog - Little API
 
+## [1.2.0] - 2025-11-03
+
+### 📚 Added - Next.js 16 Migration Documentation
+
+**Documentación Completa de Migración**:
+- ✨ Guía paso a paso completa: `docs/MIGRATION-NEXT-15-TO-16.md` (~1,200 líneas)
+  - 7 pasos principales con instrucciones detalladas
+  - 80+ code snippets con comparaciones antes/después
+  - 12 breaking changes documentados exhaustivamente
+  - Sección de troubleshooting con 8+ casos
+  - Estrategias para proyectos grandes y monorepos
+  - Tablas comparativas de performance
+  - Enlaces a documentación oficial
+  
+- ✅ Checklist imprimible: `docs/MIGRATION-CHECKLIST-PRINTABLE.md`
+  - 100+ ítems verificables
+  - Espacio para fechas y responsables
+  - Sección de issues encontrados
+  - Tablas de métricas (build times, bundle sizes)
+  - Aprobación final con firmas
+  
+- ⚡ Quick Reference: `docs/MIGRATION-QUICK-REFERENCE.md`
+  - Guía de 1 página con comandos esenciales
+  - Breaking changes checklist rápido
+  - Troubleshooting express
+  - Tips pro para migración eficiente
+  
+- 📖 Context7 Reference: `docs/context7/NEXTJS-16-MIGRATION-CONTEXT7.md`
+  - Documentación de fuentes consultadas
+  - Library ID: `/vercel/next.js` (Trust Score: 10/10)
+  - 68 snippets oficiales catalogados
+  - Guía de uso de Context7 para futuras actualizaciones
+  - Estadísticas de cobertura completas
+
+**Contenido Técnico Cubierto**:
+- ✅ Actualización React 19.1 → 19.2
+- ✅ Migración Next.js 15 → 16
+- ✅ Node.js >= 18.18.0 requerido
+- ✅ Turbopack configuration (experimental → root level)
+- ✅ React Compiler stable (memoización automática)
+- ✅ Cache Components (dynamicIO replacement)
+- ✅ Middleware → Proxy renaming
+- ✅ Async params/searchParams migration
+- ✅ Async next/headers APIs (cookies, headers, draftMode)
+- ✅ next lint removal → ESLint CLI
+- ✅ Runtime config → Environment variables
+- ✅ next/image changes (TTL, remotePatterns, localPatterns)
+- ✅ Parallel routes default.js requirement
+- ✅ Sass imports sin tilde (~)
+- ✅ Stable APIs (cacheLife, cacheTag)
+
+**Características Destacadas**:
+- 🎯 Enfoque educativo con explicaciones paso a paso
+- 📊 Cobertura 100% de breaking changes oficiales
+- 🔍 Transparencia total en fuentes (Context7)
+- 🚀 Listo para usar inmediatamente
+- 📝 Formato profesional con markdown
+- ✨ Modularidad: 4 documentos independientes
+- 🎉 Checklist imprimible para seguimiento físico
+
+**README Actualizado**:
+- Nueva sección "Guía de Migración Next.js 15 → 16"
+- Enlaces a todos los documentos de migración
+- Tabla de contenidos actualizada
+
+**Resumen Ejecutivo**:
+- `docs/MIGRATION-SUMMARY.md` - Documento de entrega con métricas completas
+
+**Estadísticas**:
+- Total líneas: ~2,500
+- Code snippets: 80+
+- Documentos: 4
+- Secciones principales: 25+
+- Breaking changes: 12
+- Ítems de checklist: 100+
+- Fuentes verificadas: 68 snippets oficiales (Trust Score 10/10)
+
+---
+
 ## [1.1.1] - 2025-10-02
 
 ### 🐛 Fixed

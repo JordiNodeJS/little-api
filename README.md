@@ -1,6 +1,7 @@
 # 🎓 Little API - Proyecto Educativo de Next.js 15
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black)](https://nextjs.org/)
+[![Next.js 16 Ready](https://img.shields.io/badge/Next.js_16-Migration_Ready-green)](docs/MIGRATION-INDEX.md)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -20,6 +21,7 @@
 - [Testing y Ejemplos](#-testing-y-ejemplos)
 - [Lecciones Aprendidas](#-lecciones-aprendidas)
 - [Debugging con Chrome DevTools](#-debugging-con-chrome-devtools)
+- [Guía de Migración Next.js 15 → 16](#-guía-de-migración-nextjs-15--16)
 - [Recursos Adicionales](#-recursos-adicionales)
 
 ---
@@ -464,7 +466,38 @@ Si vas a usar este proyecto en un curso:
 
 ---
 
-## 📞 Contacto y Soporte
+## � Guía de Migración Next.js 15 → 16
+
+¿Quieres actualizar tu proyecto a Next.js 16? Tenemos una guía completa:
+
+### 📚 Documentación de Migración
+
+- **[Guía Completa de Migración](docs/MIGRATION-NEXT-15-TO-16.md)** - Paso a paso detallado
+- **[Checklist Imprimible](docs/MIGRATION-CHECKLIST-PRINTABLE.md)** - Para seguimiento del proceso
+- **[Referencia Context7](docs/context7/NEXTJS-16-MIGRATION-CONTEXT7.md)** - Fuentes y snippets usados
+
+### ✨ Qué Incluye
+
+- ✅ Actualización de React 19.1 → 19.2
+- ✅ Next.js 15 → 16 con breaking changes
+- ✅ Migración de Turbopack configuration
+- ✅ React Compiler (memoización automática)
+- ✅ Middleware → Proxy renaming
+- ✅ Async params/searchParams migration
+- ✅ Testing y validación post-migración
+- ✅ Estrategias para proyectos grandes/monorepos
+
+### 🎯 Características de Next.js 16
+
+- Turbopack por defecto (más rápido)
+- React Compiler estable
+- Cache Components (antes dynamicIO)
+- APIs asíncronas modernas
+- Mejor rendimiento y DX
+
+---
+
+## �📞 Contacto y Soporte
 
 ¿Preguntas? ¿Sugerencias?
 
