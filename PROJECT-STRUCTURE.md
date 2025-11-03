@@ -50,7 +50,7 @@ little-api/
 ├── 📄 CONTRIBUTING.md                         # Guía para contribuidores
 ├── 📄 LICENSE                                 # Licencia MIT
 ├── 📄 PROJECT-STRUCTURE.md                    # Este archivo
-├── 📄 .cursorrules                            # Reglas de AI para Cursor (Next.js 15)
+├── 📄 .cursorrules                            # Reglas de AI para Cursor (Next.js 16)
 │
 ├── 📄 test-api.js                             # Script de testing automático
 ├── 📄 .env.example                            # Ejemplo de variables de entorno
@@ -87,10 +87,10 @@ little-api/
 |---------|-----------|
 | `package.json` | Scripts: `dev`, `build`, `start`, `lint`, `test` |
 | `tsconfig.json` | Configuración de TypeScript estricto |
-| `next.config.ts` | Configuración de Next.js 15 |
+| `next.config.ts` | Configuración de Next.js 16 |
 | `.env.example` | Plantilla para variables de entorno |
 | `.gitignore` | Archivos a ignorar por Git |
-| `.cursorrules` | Reglas de AI para Cursor (Next.js 15 + Context7) |
+| `.cursorrules` | Reglas de AI para Cursor (Next.js 16 + Context7) |
 | `.cursor/rules.md` | Reglas avanzadas Chrome DevTools MCP |
 
 ### Testing

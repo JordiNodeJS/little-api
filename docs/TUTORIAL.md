@@ -1,41 +1,14 @@
-# 📖 Tutorial Completo: Crea tu Primer Endpoint en Next.js 15
+# 📖 Tutorial Completo: Crea tu Primer Endpoint en Next.js 16
 
-> **Objetivo**: Aprender a crear un endpoint API funcional desde cero usando Next.js 15 y App Router, siguiendo buenas prácticas profesionales.
-
----
-
-## 📑 Índice
-
-1. [Introducción](#1-introducción)
-2. [Conceptos Previos](#2-conceptos-previos)
-3. [Inicialización del Proyecto](#3-inicialización-del-proyecto)
-4. [Estructura de Carpetas](#4-estructura-de-carpetas)
-5. [Creación del Primer Endpoint](#5-creación-del-primer-endpoint)
-6. [Tipado con TypeScript](#6-tipado-con-typescript)
-7. [Consumo de API Externa](#7-consumo-de-api-externa)
-8. [Manejo de Errores](#8-manejo-de-errores)
-9. [Testing del Endpoint](#9-testing-del-endpoint)
-10. [Segundo Endpoint (Práctica)](#10-segundo-endpoint-práctica)
-11. [Mejores Prácticas](#11-mejores-prácticas)
-12. [Resumen Final](#12-resumen-final)
+> **Objetivo**: Aprender a crear un endpoint API funcional desde cero usando Next.js 16 y App Router, siguiendo buenas prácticas profesionales.
 
 ---
 
-## 1. Introducción
+## 🎯 Introducción
 
-### ¿Qué vamos a construir?
+### ¿Por qué Next.js 16?
 
-Un endpoint API que:
-- ✅ Consume una API pública (Advice Slip API)
-- ✅ Acepta parámetros por query string
-- ✅ Valida las entradas del usuario
-- ✅ Transforma la respuesta en un formato simplificado
-- ✅ Maneja errores de forma profesional
-- ✅ Está completamente tipado con TypeScript
-
-### ¿Por qué Next.js 15?
-
-Next.js 15 introduce mejoras significativas:
+Next.js 16 introduce mejoras significativas:
 - **App Router estable**: Nueva forma de estructurar aplicaciones
 - **Fetch mejorado**: Caching y streaming nativos
 - **TypeScript first**: Mejor soporte y tipado automático
@@ -75,9 +48,11 @@ export async function GET(request: Request) {
 - Exportan funciones nombradas según el método HTTP: `GET`, `POST`, `PUT`, `DELETE`, etc.
 - Reciben un objeto `Request` y devuelven un objeto `Response`
 
-### Request y Response en Next.js 15
+## 📚 Conceptos Básicos
 
-Next.js 15 usa los estándares Web API de `Request` y `Response`:
+### Request y Response en Next.js 16
+
+Next.js 16 usa los estándares Web API de `Request` y `Response`:
 
 ```typescript
 // Request: información de la petición entrante
@@ -155,7 +130,11 @@ pnpm dev
 # http://localhost:3000
 ```
 
-**¡Felicidades!** 🎉 Ya tienes Next.js 15 corriendo.
+```
+
+**¡Felicidades!** 🎉 Ya tienes Next.js 16 corriendo.
+
+### 🔍 ¿Qué acabas de instalar?
 
 ---
 
@@ -837,7 +816,7 @@ export const revalidate = 3600; // segundos
 
 ### Lo que has aprendido
 
-✅ **Inicializar** un proyecto Next.js 15 con TypeScript  
+✅ **Inicializar** un proyecto Next.js 16 con TypeScript  
 ✅ **Estructurar** endpoints en App Router (`app/api/.../route.ts`)  
 ✅ **Crear** Route Handlers con funciones `GET`, `POST`, etc.  
 ✅ **Consumir** APIs externas con `fetch`  
@@ -879,7 +858,7 @@ export const revalidate = 3600; // segundos
 
 - 📖 [Next.js Docs](https://nextjs.org/docs)
 - 📚 [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- 🎥 [Next.js 15 YouTube Tutorials](https://www.youtube.com/results?search_query=nextjs+15+tutorial)
+- 🎥 [Next.js 16 YouTube Tutorials](https://www.youtube.com/results?search_query=nextjs+16+tutorial)
 - 💬 [Next.js Discord Community](https://nextjs.org/discord)
 
 ---
@@ -887,7 +866,7 @@ export const revalidate = 3600; // segundos
 <div align="center">
 
 **¡Felicidades!** 🎉  
-Has completado el tutorial completo de creación de endpoints en Next.js 15.
+Has completado el tutorial completo de creación de endpoints en Next.js 16.
 
 [⬆️ Volver al inicio](#-tutorial-completo-crea-tu-primer-endpoint-en-nextjs-15)
 
